@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Many Bank – Para o Amor da Minha Vida ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      color: #2f3640;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      display: none; /* Esconde a página até a senha ser correta */
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #e84118;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #718093;
+    }
+
+    .saldo {
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+      color: #44bd32;
+      font-weight: bold;
+    }
+
+    .log {
+      width: 100%;
+      max-width: 600px;
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .entrada {
+      border-bottom: 1px solid #eee;
+      padding: 1rem 0;
+    }
+
+    .entrada:last-child {
+      border-bottom: none;
+    }
+
+    .data {
+      font-weight: bold;
+      color: #353b48;
+    }
+
+    .valor {
+      color: #44bd32;
+      font-weight: bold;
+    }
+
+    .nota {
+      color: #718093;
+      font-style: italic;
+    }
+
+    footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Many Bank 💖</h1>
+    <p class="subtitle">Nome da Conta - Princesa <br>
+        Para o amor da minha vida — sempre que posso, guardo algo para ti 🫶</p>
+  </header>
+
+  <div class="saldo" id="saldoTotal">Saldo atual: 0 MZN</div>
+
+  <div class="log" id="listaEntradas">
+    <div class="entrada">
+      <div class="data">14 de Junho de 2025</div>
+      <div class="valor">+ 700 MZN</div>
+      <div class="nota">Projeto de menu finalizado — guardei isto para ti com amor ❤️</div>
+    </div>
+
+    <div class="entrada">
+      <div class="data">10 de Junho de 2025</div>
+      <div class="valor">+ 300 MZN</div>
+      <div class="nota">Guardei um bocadinho para nós 😌</div>
+    </div>
+
+    <!-- Adicione mais entradas aqui -->
+  </div>
+
+  <footer>
+    &copy; 2025 Many Bank — Feito com amor por Mohamad 💌
+  </footer>
+
+  <script>
+    const senhaCorreta = "amor123";
+    const tentativas = 3;
+
+    for (let i = 0; i < tentativas; i++) {
+      const senha = prompt("Digite a senha para acessar o Many Bank:");
+      if (senha === senhaCorreta) {
+        document.body.style.display = "flex";
+        break;
+      } else {
+        if (i === tentativas - 1) {
+          alert("Senha incorreta. Página bloqueada.");
+          document.body.innerHTML = "<h2>❌ Acesso negado.</h2>";
+        } else {
+          alert("Senha incorreta. Tente novamente.");
+        }
+      }
+    }
+
+    // Cálculo automático do saldo
+    function calcularSaldo() {
+      let total = 0;
+      const valores = document.querySelectorAll(".valor");
+      valores.forEach((el) => {
+        const texto = el.textContent.trim();
+        const numero = parseFloat(texto.replace("+", "").replace("MZN", "").trim());
+        total += numero;
+      });
+      document.getElementById("saldoTotal").textContent = `Saldo atual: ${total.toFixed(2)} MZN`;
+    }
+
+    calcularSaldo();
+  </script>
+
+</body>
+</html>
